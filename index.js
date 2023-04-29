@@ -1,6 +1,8 @@
 console.clear()
 console.log(`Iniciando API...`)
 
+require('dotenv').config()
+
 const express   = require('express')
 const cors      = require('cors')
 const mongoose  = require('mongoose')
@@ -12,8 +14,10 @@ app.use( cors() )
 app.use( express.json() )
 app.use( express.urlencoded( { extended : false } ))
 
-const main = async () => await mongoose.connect('mongodb://127.0.0.1:27017/google-clone-tv').
-    then (() => {
+let db = 'mongodb+srv://gsevillagarces:test123@cluster0.ty0etsd.mongodb.net/test' || 'mongodb://127.0.0.1:27017/google-clone-tv'
+
+const main = async () => await mongoose.connect(db)
+    .then (() => {
     console.log(`Conectando a mongoDB...`)
 }) 
 
@@ -164,8 +168,6 @@ app.delete( '/users/:user', async (req, res) => {
 })
 
 
-
-
 //login
 const loginSchema = new mongoose.Schema(
     { username: String, password: String },
@@ -192,7 +194,8 @@ app.post( '/login', async (req, res) => {
 )
 
 
-
 app.listen( 4002 , () => {
     console.log(`Iniciando la API en el puerto 4002`)
 })
+
+module.exports = app
