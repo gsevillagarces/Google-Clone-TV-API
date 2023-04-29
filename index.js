@@ -14,7 +14,9 @@ app.use( cors() )
 app.use( express.json() )
 app.use( express.urlencoded( { extended : false } ))
 
-let db = 'mongodb+srv://gsevillagarces:test123@cluster0.ty0etsd.mongodb.net/test' || 'mongodb://127.0.0.1:27017/google-clone-tv'
+// let db = 'mongodb+srv://gsevillagarces:test123@cluster0.ty0etsd.mongodb.net/test' || 'mongodb://127.0.0.1:27017/google-clone-tv'
+
+let db = 'mongodb://127.0.0.1:27017/google-clone-tv'
 
 const main = async () => await mongoose.connect(db)
     .then (() => {
@@ -22,6 +24,9 @@ const main = async () => await mongoose.connect(db)
 }) 
 
 main()
+
+
+
 
 //apps
 const appsSchema = new mongoose.Schema(
@@ -70,6 +75,8 @@ app.get( '/content', async (req, res) => {
 
 
 
+
+
 //h1
 const h1Schema = new mongoose.Schema(
     { h1: String, src: String, alt: String },
@@ -82,6 +89,8 @@ app.get( '/h1', async (req, res) => {
     const buscar = await H1.find()
     res.json(buscar)
 })
+
+
 
 
 
@@ -100,6 +109,8 @@ app.get( '/menu', async (req, res) => {
 
 
 
+
+
 //suggestions
 const suggestionsSchema = new mongoose.Schema(
     { txt: String, image: String, alt : String,  href: String },
@@ -112,6 +123,8 @@ app.get( '/suggestions', async (req, res) => {
     const buscar = await Suggestions.find()
     res.json(buscar)
 })
+
+
 
 
 
@@ -148,6 +161,9 @@ app.put( '/users', async (req, res) => {
     res.json(buscar)
 })
 
+
+
+
 //editUsers
 app.get( '/users/:user', async (req, res) => {
     const { user } = req.params
@@ -166,6 +182,8 @@ app.delete( '/users/:user', async (req, res) => {
     const buscar = await Users.find()
     res.json(buscar)
 })
+
+
 
 
 //login
@@ -192,6 +210,8 @@ app.post( '/login', async (req, res) => {
     buscarUsuario && buscarUsuario.password === password && res.json({ entrar : true })
     buscarUsuario && buscarUsuario.password !== password && res.json({ error: 'Incorrect password' , entrar : false })}    
 )
+
+
 
 
 app.listen( 4002 , () => {
