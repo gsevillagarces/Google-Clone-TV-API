@@ -25,9 +25,6 @@ const main = async () => await mongoose.connect(db)
 
 main()
 
-
-
-
 //apps
 const appsSchema = new mongoose.Schema(
     { appName: String, logoApp: String, appColor: String, href: String},
@@ -40,7 +37,6 @@ app.get( '/apps', async (req, res) => {
     const buscar = await Apps.find()
     res.json(buscar)
 })
-
 
 //showApps
 app.get( '/apps/:appId', async (req, res) => {
@@ -63,9 +59,6 @@ app.get( '/avatar', async (req, res) => {
     res.json(buscar)
 })
 
-
-
-
 //content
 const contentSchema = new mongoose.Schema(
     { type: String, provider: String, alt: String, logoProvider: String, bgSlide: String, bgSmall: String, title: String, summary: String, btnText: String, rating: String, restriction: String, category: String, years: String, watchlisted: String, watched: String, featured: String },
@@ -79,16 +72,12 @@ app.get( '/content', async (req, res) => {
     res.json(buscar)
 })
 
-
 //showContent
 app.get( '/content/:movie', async (req, res) => {
     const { movie } = req.params
     const buscar = await Content.find({_id : movie})
     res.json(buscar)
 })
-
-
-
 
 //h1
 const h1Schema = new mongoose.Schema(
@@ -103,10 +92,6 @@ app.get( '/h1', async (req, res) => {
     res.json(buscar)
 })
 
-
-
-
-
 //menu
 const menuSchema = new mongoose.Schema(
     { menu: String, href: String },
@@ -120,10 +105,6 @@ app.get( '/menu', async (req, res) => {
     res.json(buscar)
 })
 
-
-
-
-
 //suggestions
 const suggestionsSchema = new mongoose.Schema(
     { txt: String, image: String, alt : String,  href: String },
@@ -136,10 +117,6 @@ app.get( '/suggestions', async (req, res) => {
     const buscar = await Suggestions.find()
     res.json(buscar)
 })
-
-
-
-
 
 //users
 const usersSchema = new mongoose.Schema(
@@ -174,17 +151,12 @@ app.put( '/users', async (req, res) => {
     res.json(buscar)
 })
 
-
-
-
 //editUsers
 app.get( '/users/:user', async (req, res) => {
     const { user } = req.params
     const buscar = await Users.find({_id : user})
     res.json(buscar)
 })
-
-
 
 //deleteUsers
 app.delete( '/users/:user', async (req, res) => {
@@ -193,9 +165,6 @@ app.delete( '/users/:user', async (req, res) => {
     const buscar = await Users.find()
     res.json(buscar)
 })
-
-
-
 
 //login
 const loginSchema = new mongoose.Schema(
@@ -221,9 +190,6 @@ app.post( '/login', async (req, res) => {
     buscarUsuario && buscarUsuario.password === password && res.json({ entrar : true })
     buscarUsuario && buscarUsuario.password !== password && res.json({ error: 'Incorrect password' , entrar : false })}    
 )
-
-
-
 
 app.listen( 4002 , () => {
     console.log(`Iniciando la API en el puerto 4002`)
