@@ -42,6 +42,13 @@ app.get( '/apps', async (req, res) => {
 })
 
 
+//showApps
+app.get( '/apps/:appId', async (req, res) => {
+    const { appId } = req.params
+    const buscar = await Apps.find({_id : appId})
+    res.json(buscar)
+})
+
 
 //avatar
 const avatarSchema = new mongoose.Schema(
