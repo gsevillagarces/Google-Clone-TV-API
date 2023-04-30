@@ -80,6 +80,13 @@ app.get( '/content/:movie', async (req, res) => {
     res.json(buscar)
 })
 
+//updateContent
+app.put( '/content/:movie', async (req, res) => {
+    const { movie } = req.params
+    const buscar = await Content.find({_id : movie})
+    res.json(buscar)
+})
+
 
 
 
