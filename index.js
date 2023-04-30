@@ -73,6 +73,14 @@ app.get( '/content', async (req, res) => {
 })
 
 
+//showContent
+app.get( '/content/:movie', async (req, res) => {
+    const { movie } = req.params
+    const buscar = await Content.find({_id : movie})
+    res.json(buscar)
+})
+
+
 
 
 
@@ -170,8 +178,6 @@ app.get( '/users/:user', async (req, res) => {
     const buscar = await Users.find({_id : user})
     res.json(buscar)
 })
-
-
 
 
 
