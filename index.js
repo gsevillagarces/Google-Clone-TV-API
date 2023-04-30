@@ -14,9 +14,9 @@ app.use( cors() )
 app.use( express.json() )
 app.use( express.urlencoded( { extended : false } ))
 
-// let db = 'mongodb+srv://gsevillagarces:test123@cluster0.ty0etsd.mongodb.net/test' || 'mongodb://127.0.0.1:27017/google-clone-tv'
+let db = 'mongodb+srv://gsevillagarces:test123@cluster0.ty0etsd.mongodb.net/test' || 'mongodb://127.0.0.1:27017/google-clone-tv'
 
-let db = 'mongodb://127.0.0.1:27017/google-clone-tv'
+// let db = 'mongodb://127.0.0.1:27017/google-clone-tv'
 
 const main = async () => await mongoose.connect(db)
     .then (() => {
