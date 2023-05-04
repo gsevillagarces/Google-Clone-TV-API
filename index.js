@@ -14,7 +14,7 @@ app.use( cors() )
 app.use( express.json() )
 app.use( express.urlencoded( { extended : false } ))
 
-//Intentos de deploy en VERCEL
+//Intentos de deploy en VERCEL 
 let db = 'mongodb+srv://gsevillagarces:test123@cluster0.ty0etsd.mongodb.net/test/google-clone-tv' || 'mongodb://127.0.0.1:27017/google-clone-tv'
 // let db = 'mongodb://127.0.0.1:27017/google-clone-tv'
 
