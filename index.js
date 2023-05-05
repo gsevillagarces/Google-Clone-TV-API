@@ -15,10 +15,11 @@ app.use( express.json() )
 app.use( express.urlencoded( { extended : false } ))
 
 //Intentos de deploy en VERCEL 
-let db = 'mongodb+srv://gsevillagarces:test123@cluster0.ty0etsd.mongodb.net/test/google-clone-tv' || 'mongodb://127.0.0.1:27017/google-clone-tv'
+let db = 'mongodb+srv://gsevillagarces:test123@cluster0.ty0etsd.mongodb.net/google-clone-tv' || 'mongodb://127.0.0.1:27017/google-clone-tv'
+
 // let db = 'mongodb://127.0.0.1:27017/google-clone-tv'
 
-const main = async () => await mongoose.connect(db)
+const main = async () => await mongoose.connect (db)
     .then (() => {
     console.log(`Conectando a mongoDB...`)
 }) 
